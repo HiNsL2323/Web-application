@@ -1,0 +1,2 @@
+CREATE DATABASE online_booking;
+USE online_booking;

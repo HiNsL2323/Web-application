@@ -1,0 +1,43 @@
+CREATE TABLE member (
+	lastName varchar(200) NOT NULL,
+	firstName varchar(200) NOT NULL,
+	mailingAddress varchar(200) NOT NULL,
+	phoneNumber varchar(200) NOT NULL,
+	memberID varchar(10),
+	emailAddress varchar(200) NOT NULL,
+	password varchar(200) NOT NULL,
+	PRIMARY KEY (memberID),
+	UNIQUE (emailAddress)
+);
+
+
+CREATE TABLE room_details (
+	roomGrade varchar(20),
+	roomSpec varchar(200) NOT NULL,
+	roomPrice decimal(10,2) NOT NULL,
+	roomIMG text NOT NULL,
+	PRIMARY KEY (roomGrade)
+);
+
+
+CREATE TABLE room (
+	roomNumber int(4),
+	roomGrade varchar(20) NOT NULL,
+	PRIMARY KEY (roomNumber),
+	FOREIGN KEY (roomGrade) REFERENCES room_details(roomGrade)
+);
+
+
+CREATE TABLE booking (
+	bookingID varchar(10),
+	roomNumber int(4) NOT NULL,
+	reservedStartDate datetime NOT NULL,
+	reservedEndDate datetime NOT NULL,
+	reservedStartTime datetime NOT NULL,
+	reservedEndTime datetime NOT NULL,
+	memberID varchar(10) NOT NULL,
+	created datetime NOT NULL,
+	PRIMARY KEY (bookingID),
+	FOREIGN KEY (roomNumber) REFERENCES room(roomNumber),
+	FOREIGN KEY (memberID) REFERENCES member(memberID)
+);

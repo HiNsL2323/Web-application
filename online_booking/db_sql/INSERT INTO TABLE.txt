@@ -1,0 +1,15 @@
+INSERT INTO product_category (category_name) VALUES ('watch'), ('wallet'), ('shoes'), ('camera'), ('backpack');
+
+INSERT INTO product (product_name, product_description, product_price, product_category, product_img) VALUES
+	('Festina Classic F16744/4 Mens Wristwatch Classic & Simple', 'Quartz Black Dial Stainless Steel Men Watch', '739', '1', 'F16744_4.jpg'),
+    ('GUESS Men W0380G5 Blue Dial, Rose Gold-Tone Case, Leather Strap, Iconic Blue Chronograph Watch', 'Horizon Quartz Men Watch / Leather 45mm', '789', '1', 'W0380G5.jpg'),
+    ('Casio G-Shock G-Steel GST-B200B-1AJF Mens Japan', 'G-Steel World Wave Solar', '1759', '1', 'GST-W300-1AJF.jpg'),
+    ('Citizen Reloj Off Collection AW0115-11E Eco-Drive', 'Eco-Drive Eco-Drive Black Dial Stainless Steel Men Watch' ,'1029', '1', 'AW0115-11E.jpg'),
+    ('Armani Men AR5866 Black Chronograph Dial Watch', 'Quartz Black Dial Stainless Steel Men Watch', '949', '1', 'AR5866.jpg'),
+    ('TH Monogram Leather Credit Card Holder', 'The new mark of distinction. Inspired by our heritage, but designed for tomorrow — our Monogram is a modern take on a time-honoured icon.', '490', '2', 'AM11592BDS.jpg'),
+    ('Textured Leather Card And Coin Wallet', 'This well-organised leather wallet features compartments for coins, cards and notes in a compact, sleek design with signature tape detailing.', '790', '2', 'AM11589BDS.jpg'),
+    ('LOEWE BLACKPUZZLE CONTRAST STITCH ZIPPED LEATHER CARDHOLDER', 'Defined by its geometrical topstitches and subtle logo embossing, this Puzzle cardholder by LOEWE is a whimsical must-have for securing your credentials. Crafted from soft grain leather, this dainty piece will certainly withstand the test of time.', '3600', '2', '221183028.jpg'),
+    ('BOTTEGA VENETA INTRECCIO LEATHER CARDHOLDER', 'Championing its emblematic woven leather motif, Bottega Veneta presents this card case to spruce up your everyday essentials.', '3500', '2', '221236352.jpg'),
+    ('NIKE AIR TRAINER 1', 'Details like a forefoot strap add retro appeal, leather breaks in beautifully, and if that is not enough, Air cushioning keeps you comfortable on long outings. So where will you take your Trainers?', '589', '3', 'FB8066-100_BL1.png'),
+    ('PowerShot SX740 HS', 'Coupled with latest DIGIC 8 digital imaging processor, 4K UHD movie shooting with support of Digital 5-axis IS and Dynamic IS, powerful 40x Superzoom and 1cm Macro shooting, PowerShot SX740 HS suits for both distant and close-up or motion and still topics.', '3280', '4', ''),
+    ('Samsonite Red DOBIN BACKPACK', 'Two-toned Poly casual backpack with top opening. Active looking with simple diagonal cut and colour block point.', '1480', '5', 'ss-128138-1583.jpg');
