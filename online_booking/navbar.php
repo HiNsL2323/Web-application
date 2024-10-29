@@ -173,7 +173,12 @@ mysqli_close($conn);
 							if (isset($_SESSION['loginUser'])) {
 								echo $_SESSION['loginUser']; 
 								echo "<ul class='dropdown-menu'>
-									<a href='logout.php'>Logout</a>
+								<li>
+								<a href='my_member_page.php'>MyMember</a>
+								</li>
+								<li>
+								<a href='logout.php'>Logout</a>
+								</li>
 								</ul>";
 							} else {
 								echo "<a href='login.php'>Login</a>";
