@@ -28,7 +28,7 @@
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
 
-        if (!empty($user['memberID'])) {
+        if (!empty(row['memberID'])) {
             //if user found
             session_start();
             $_SESSION['loginUserID'] = $row['memberID'];
