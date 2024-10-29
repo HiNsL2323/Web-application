@@ -24,7 +24,7 @@
             $sql = "SELECT * FROM member WHERE emailAddress = '$loginemail'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
-
+            // decrypt password 
             if ($row && password_verify($loginpassword, $row['password'])) {
                 // If user found and password matches
                 session_start();
@@ -41,7 +41,7 @@
     } else {
         echo 'Error: Form not submitted correctly.';
     }
-
     // Close database connection
     mysqli_close($conn);
 ?>
+  
