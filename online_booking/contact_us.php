@@ -73,7 +73,7 @@
 					<img src="static/img/widget/shopping.jpg" style="width:100%">
 				</div>
 				<div class="column">
-					<form action='add_comment.php' method='POST'>
+					<form action='#.php' method='POST'>
 						<label for="firstname">First Name</label>
 						<input type="text" id="firstname" name="firstname" placeholder="Your name..">
 						<label for="lastname">Last Name</label>

@@ -99,7 +99,8 @@
         <div class="member-info">
             <p><strong>Last Name:</strong> <?php echo htmlspecialchars($member['lastName']); ?></p>
             <p><strong>First Name:</strong> <?php echo htmlspecialchars($member['firstName']); ?></p>
-            <p><strong>Mailing Address:</strong> <?php echo htmlspecialchars($member['mailingAddress']); ?></p>
+            <!--<p><strong>Mailing Address:</strong> <?php echo htmlspecialchars($member['mailingAddress']); ?></p>-->
+            <p><strong>Mailing Address:</strong> <?php echo "<br><br>" . nl2br($member['mailingAddress']); ?></p>
             <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($member['phoneNumber']); ?></p>
             <p><strong>Member ID:</strong> <?php echo htmlspecialchars($member['memberID']); ?></p>
             <p><strong>Email Address:</strong> <?php echo htmlspecialchars($member['emailAddress']); ?></p>
