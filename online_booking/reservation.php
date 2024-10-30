@@ -1,22 +1,12 @@
 <?php
 
-// Connect to database
-include 'DBconn.php';
-
 // Predefine filtering result in rooms.php
+
 if (isset($_GET['roomGrade'])) {
-    $roomGrade = mysqli_real_escape_string($conn, $_GET['roomGrade']);
-    $sql = "SELECT * FROM room_details WHERE roomGrade = '$roomGrade'";
+    $selectedroomGrade = isset($_GET['roomGrade']) ? $_GET['roomGrade'] : '';
 } else {
-	$sql = "SELECT * FROM room_details WHERE roomGrade = '$roomGrade'";
+	$selectedroomGrade = null;
 }
-
-// Filter available rooms
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-
-// Close database connection
-mysqli_close($conn);
 
 ?>
 
@@ -26,52 +16,38 @@ mysqli_close($conn);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
-	<link rel="stylesheet" href="css/roomDetail.css">
-	<title>Rooms</title>
+	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+	<link rel="stylesheet" href="css/layout.css">
+	<title>Reservation</title>
 </head>
 
 <body>
 	<?php include "navbar.php"; ?>
 
-    <!-- Rooms Details -->
-	<section id="room-page">
-		<div class="room-details">
-			<!-- IMG -->
-			<div class="room-img">
+    <form method="POST" action="roomSearch.php">
+        <label for="roomGrade">Room Grade:</label>
+        <select name="roomGrade" id="roomGrade">
+            <option value="Presidential" <?php echo ($selectedroomGrade == 'Presidential') ? 'selected' : ''; ?> >Presidential</option>
+            <option value="Suite" <?php echo ($selectedroomGrade == 'Suite') ? 'selected' : ''; ?> >Suite</option>
+            <option value="Executive" <?php echo ($selectedroomGrade == 'Executive') ? 'selected' : ''; ?> >Executive</option>
+			<option value="Deluxe" <?php echo ($selectedroomGrade == 'Deluxe') ? 'selected' : ''; ?> >Deluxe</option>
+			<option value="Standard" <?php echo ($selectedroomGrade == 'Standard') ? 'selected' : ''; ?> >Standard</option>
+        </select><br>
 
-				<!-- Swiper Slider -->
-				<div class="swiper mySwiper">
-					<div class="swiper-slide">
-						<?php
-						    echo "<img src='static/img/rooms/{$row['roomIMG']}' />";
-						?>
-					</div>
-				</div>
+        <label for="reservedStartDate">Check In Date:</label>
+        <input type="date" name="reservedStartDate" id="reservedStartDate"><br>
 
-			</div>
-			<!-- Text -->
-			<div class="room-text">
-				<!-- Room Grade-->
-				<?php
-				    echo "
-			            <span class=\"room-category\">Grade</span>
-			            <h3>{$row['roomGrade']}</h3>
-                        <span class=\"room-price\">{$row['roomPrice']}</span>
-                    ";
-                    $spec = $row['roomSpec'];
-                    echo "<p>".nl2br($spec)."</p>";
-				?>
+        <label for="reservedEndDate">Check Out Date:</label>
+        <input type="date" name="reservedEndDate" id="reservedEndDate"><br>
 
-				<!--btn-->
-				<div class="room-button">
-                    <a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-wishlist-btn">Check Available Room</a>
-				</div>
-				<!--help-btn-->
-				<a href="#" class="help-btn">Need Any Help?</a>
-			</div>
-		</div>
-	</section>
+        <label for="reservedStartTime">Check In Time:</label>
+        <input type="time" name="reservedStartTime" id="reservedStartTime"><br>
+
+        <label for="reservedEndTime">Check Out Time:</label>
+        <input type="time" name="reservedEndTime" id="reservedEndTime"><br>
+
+        <input type="submit" name="search" value="Search">
+    </form>
 
     <?php include "footer.php"; ?>
 </body>
