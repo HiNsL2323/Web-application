@@ -123,6 +123,8 @@ mysqli_close($conn);
 			background-color: #222;
 			padding: 10px;
 			z-index: 1000;
+			min-width: 150px;
+			text-align: left;
 		}
 
 		.dropdown:hover .dropdown-menu {
@@ -137,8 +139,11 @@ mysqli_close($conn);
 			color: #fff;
 			text-decoration: none;
 			text-transform: capitalize;
-			margin-right: 100px;
+			margin-right: 5px;
 			text-align: center;
+			padding: 20px;
+			width: 10%;
+			box-sizing: border-box;
 		}
 	</style>
 </head>
