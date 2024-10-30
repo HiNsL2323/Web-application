@@ -70,7 +70,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="column">
-					<img src="static/img/widget/shopping.jpg" style="width:100%">
+					<img src="static/img/widget/frontdesk.jpg" style="width:100%">
 				</div>
 				<div class="column">
 					<form action='#.php' method='POST'>
