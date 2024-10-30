@@ -111,7 +111,6 @@
             $firstName = $_POST['firstName'];
             $mailingAddress = $_POST['mailingAddress'];
             $phoneNumber = $_POST['phoneNumber'];
-            $memberID = $_POST['memberID'];
             $emailAddress = $_POST['emailAddress'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
 
@@ -127,13 +126,16 @@
             $emailCheckResult = $conn->query($emailCheckSql);
 
             // Check if member ID already exists
-            $memberIDCheckSql = "SELECT * FROM member WHERE memberID = '$memberID'";
-            $memberIDCheckResult = $conn->query($memberIDCheckSql);
+            //$memberIDCheckSql = "SELECT * FROM member WHERE memberID = '$memberID'";
+            //$memberIDCheckResult = $conn->query($memberIDCheckSql);
+
+            // Generate member ID
+            $timestamp = time();
+		    $memberID = "Mem" . base_convert($timestamp, 10, 36) . str_pad(rand(1, 999999), 6, "0", STR_PAD_LEFT);
+
 
             if ($emailCheckResult->num_rows > 0) {
                 $errorMessage = "Email address already exists. Please use a different one.";
-            } elseif ($memberIDCheckResult->num_rows > 0) {
-                $errorMessage = "Member ID already exists. Please use a different one.";
             } else {
                 // Insert new record
                 $sql = "INSERT INTO member (lastName, firstName, mailingAddress, phoneNumber, memberID, emailAddress, password)
@@ -156,16 +158,14 @@
             <input type="text" id="firstName" name="firstName" required>
 
             <label for="mailingAddress">Mailing Address:</label>
-            <input type="text" id="mailingAddress" name="mailingAddress" required>
+            <textarea id="mailingAddress" name="mailingAddress" rows="4" style="width: 100%;" required></textarea>
+            <!--<input type="text" id="mailingAddress" name="mailingAddress" required>-->
 
             <label for="phoneNumber">Phone Number:</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" required>
-
-            <label for="memberID">Member ID:</label>
-            <input type="text" id="memberID" name="memberID" required>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="12345678" maxlength="8" pattern="\d{8}" required>
 
             <label for="emailAddress">Email Address:</label>
-            <input type="email" id="emailAddress" name="emailAddress" required>
+            <input type="email" id="emailAddress" name="emailAddress" placeholder="testing@domain.com" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
