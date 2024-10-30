@@ -70,7 +70,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="column">
-					<img src="img/widget/shopping.jpg" style="width:100%">
+					<img src="img/widget/frontdesk.jpg" style="width:100%">
 				</div>
 				<div class="column">
 					<form action='add_comment.php' method='POST'>
