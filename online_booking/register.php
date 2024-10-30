@@ -2,13 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
-	<link rel="stylesheet" href="css/layout.css">
-	<title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <link rel="stylesheet" href="css/layout.css">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .register-page {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .error {
+            color: red;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-    <?php include "navbar.php";
+    <?php include "navbar.php"; ?>
+    <div class="register-page">
+        <h2>Register</h2>
+        <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lastName = $_POST['lastName'];
         $firstName = $_POST['firstName'];
@@ -54,31 +109,31 @@
         $conn->close();
     }
     ?>
+        <form action="" method="post">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
 
-    <form action="" method="post">
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required><br>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
 
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required><br>
+            <label for="mailingAddress">Mailing Address:</label>
+            <input type="text" id="mailingAddress" name="mailingAddress" required>
 
-        <label for="mailingAddress">Mailing Address:</label>
-        <input type="text" id="mailingAddress" name="mailingAddress" required><br>
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" required><br>
+            <label for="memberID">Member ID:</label>
+            <input type="text" id="memberID" name="memberID" required>
 
-        <label for="memberID">Member ID:</label>
-        <input type="text" id="memberID" name="memberID" required><br>
+            <label for="emailAddress">Email Address:</label>
+            <input type="email" id="emailAddress" name="emailAddress" required>
 
-        <label for="emailAddress">Email Address:</label>
-        <input type="email" id="emailAddress" name="emailAddress" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <input type="submit" value="Register">
-    </form>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <?php include "footer.php"; ?>
 </body>
 </html>
-<?php include "footer.php"; ?>
