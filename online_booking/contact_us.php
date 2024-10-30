@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
-	<link rel="stylesheet" href="css/layout.css">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="stylesheet" href="static/css/layout.css">
 	<title>Shopline</title>
 	<style>
 		* {
@@ -70,7 +70,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="column">
-					<img src="img/widget/shopping.jpg" style="width:100%">
+					<img src="static/img/widget/shopping.jpg" style="width:100%">
 				</div>
 				<div class="column">
 					<form action='add_comment.php' method='POST'>

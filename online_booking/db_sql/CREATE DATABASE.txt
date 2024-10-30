@@ -1,2 +1,0 @@
-CREATE DATABASE online_shopping;
-USE online_shopping;

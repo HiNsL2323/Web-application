@@ -1,0 +1,50 @@
+#app {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.time-slot-header {
+  display: grid;
+  grid-template-columns: 1fr repeat(7, 1fr);
+  gap: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.weekdays div {
+  text-align: center;
+}
+
+.time-slot-grid {
+  display: grid;
+  grid-template-columns: 1fr repeat(7, 1fr);
+  gap: 5px;
+}
+
+.time-slot-grid .time-label {
+  text-align: center;
+  font-weight: bold;
+}
+
+.time-slot-grid div {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.time-slot-grid .available {
+  background-color: white;
+}
+
+.time-slot-grid .booked {
+  background-color: grey;
+}
+
+.time-slot-grid .selected {
+  background-color: #80e050;
+  color: white;
+  font-weight: bold;
+}

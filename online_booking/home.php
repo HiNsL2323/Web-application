@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
-	<link rel="stylesheet" href="css/layout.css">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="stylesheet" href="static/css/layout.css">
 	<title>Dreamcatcher Palace</title>
 </head>
 
@@ -16,7 +16,7 @@
 			<table style="border-spacing:18px; width:60%; margin:0px auto;">
 				<tr>
 					<td>
-						<img src="img/favicon/android-chrome-512x512.png" style="padding:5px; width:290px ;height:290px" />
+						<img src="static/img/favicon/android-chrome-512x512.png" style="padding:5px; width:290px ;height:290px" />
 					</td>
 					<td>
 						<p style="font-size:25px; font-family:courier;">About Dreamcatcher Palace</p><br>
@@ -45,11 +45,11 @@
 							with a few clicks, the item that you wanted will be delivered to your home within 2-3 working days.</p>
 					</td>
 					<td>
-						<img src="img/home/home2.jpg" style="padding:5px; width:450px ;height:280px" />
+						<img src="static/img/home/home2.jpg" style="padding:5px; width:450px ;height:280px" />
 					</td>
 				<tr>
 					<td>
-						<img src="img/home/home1.jpg" style="padding:5px; width:450px ;height:280px" />
+						<img src="static/img/home/home1.jpg" style="padding:5px; width:450px ;height:280px" />
 					</td>
 					<td>
 						<p style="font-family:Times new roman; line-height:1.4; letter-spacing:0.45px;">

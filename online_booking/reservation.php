@@ -26,7 +26,7 @@ mysqli_close($conn);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
 	<link rel="stylesheet" href="css/roomDetail.css">
 	<title>Rooms</title>
 </head>
@@ -44,7 +44,7 @@ mysqli_close($conn);
 				<div class="swiper mySwiper">
 					<div class="swiper-slide">
 						<?php
-						    echo "<img src='img/rooms/{$row['roomIMG']}' />";
+						    echo "<img src='static/img/rooms/{$row['roomIMG']}' />";
 						?>
 					</div>
 				</div>

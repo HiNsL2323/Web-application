@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
-	<link rel="stylesheet" href="css/layout.css">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="stylesheet" href="static/css/layout.css">
 	<style>
 		body {
 			font-family: 'Alegreya Sans', sans-serif;
@@ -114,14 +114,14 @@
 				<div class="footer-text">Phone +852 98765432</div>
 				<div class="footer-text">info@DreamcatcherPalace.com</div>
 				<div class="footer-icon-list">
-					<a href="#"><img src="img/widget/facebook.svg" alt="facebook-btn" /></a>
-					<a href="#"><img src="img/widget/instagram.svg" alt="instagram-btn" /></a>
-					<a href="#"><img src="img/widget/twitter.svg" alt="twitter-btn" /></a>
-					<a href="#"><img src="img/widget/google-plus-g.svg" alt="google-plus-g-btn" /></a>
+					<a href="#"><img src="static/img/widget/facebook.svg" alt="facebook-btn" /></a>
+					<a href="#"><img src="static/img/widget/instagram.svg" alt="instagram-btn" /></a>
+					<a href="#"><img src="static/img/widget/twitter.svg" alt="twitter-btn" /></a>
+					<a href="#"><img src="static/img/widget/google-plus-g.svg" alt="google-plus-g-btn" /></a>
 				</div>
 			</div>
 			<div class="footer-box">
-				<div class="footer-logo"><img src="img/shopline/logo_shopline.png" /></div>
+				<div class="footer-logo"><img src="static/img/shopline/logo_shopline.png" /></div>
 				<div class="logo-text">Dreamcatcher Palace</div>
 			</div>
 			<div class="footer-box">
