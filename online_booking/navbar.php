@@ -172,23 +172,23 @@ mysqli_close($conn);
 				<li><a href="reservation.php">Reservation</a></li>
 				<li><a href="contact_us.php">Contact us</a></li>
 				<li class="dropdown">
-					<a href="#">
+					<!-- <a href="#"> -->
 						<?php
 						// Check login status
 							if (isset($_SESSION['loginUser'])) {
-								echo $_SESSION['loginUser']; 
+								echo "<a>" . $_SESSION['loginUser'] . "</a>";
 								echo "<ul class='dropdown-menu'>
-								<li>
-								<a href='my_member_page.php'>MyMember</a>
-								</li>
-								<li>
-								<a href='logout.php'>Logout</a>
-								</li>
+									<li>
+										<a href='my_member_page.php'>My Member</a>
+									</li>
+									<li>
+										<a href='logout.php'>Logout</a>
+									</li>
 								</ul>";
 							} else {
 								echo "<a href='login.php'>Login</a>";
 							}?>
-					</a>
+					<!-- </a>-->
 				
 				</li>
 		</nav>
