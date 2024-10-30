@@ -228,6 +228,10 @@
         if (successMessage) {
             document.getElementById("successMessage").innerText = successMessage;
             successModal.style.display = "block";
+            // Redirect to login page after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'login.php';
+            }, 1000);
         }
     </script>
 </body>
