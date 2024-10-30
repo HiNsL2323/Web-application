@@ -5,8 +5,8 @@ include 'DBconn.php';
 
 // Predefine filtering result in rooms.php
 if (isset($_GET['roomGrade'])) {
-    $roomGrade = mysqli_real_escape_string($conn, $_GET['roomGrade']);
-    $sql = "SELECT * FROM room_details WHERE roomGrade = '$roomGrade'";
+	$roomGrade = mysqli_real_escape_string($conn, $_GET['roomGrade']);
+	$sql = "SELECT * FROM room_details WHERE roomGrade = '$roomGrade'";
 } else {
 	$sql = "SELECT * FROM room_details WHERE roomGrade = '$roomGrade'";
 }
@@ -34,7 +34,7 @@ mysqli_close($conn);
 <body>
 	<?php include "navbar.php"; ?>
 
-    <!-- Rooms Details -->
+	<!-- Rooms Details -->
 	<section id="room-page">
 		<div class="room-details">
 			<!-- IMG -->
@@ -44,7 +44,7 @@ mysqli_close($conn);
 				<div class="swiper mySwiper">
 					<div class="swiper-slide">
 						<?php
-						    echo "<img src='static/img/rooms/{$row['roomIMG']}' />";
+						echo "<img src='static/img/rooms/{$row['roomIMG']}' />";
 						?>
 					</div>
 				</div>
@@ -54,18 +54,19 @@ mysqli_close($conn);
 			<div class="room-text">
 				<!-- Room Grade-->
 				<?php
-				    echo "
-			            <span class=\"room-category\">Grade</span>
-			            <h3>{$row['roomGrade']}</h3>
+				echo "
+			      <span class=\"room-category\">Grade</span>
+			      <h3>{$row['roomGrade']}</h3>
                         <span class=\"room-price\">{$row['roomPrice']}</span>
                     ";
-                    $spec = $row['roomSpec'];
-                    echo "<p>".nl2br($spec)."</p>";
+				$spec = $row['roomSpec'];
+				echo "<p>" . nl2br($spec) . "</p>";
 				?>
-
+				<?php include "timeslot.php"; ?>
 				<!--btn-->
 				<div class="room-button">
-                    <a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-wishlist-btn">Check Available Room</a>
+					<a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-wishlist-btn">Check Available
+						Room</a>
 				</div>
 				<!--help-btn-->
 				<a href="#" class="help-btn">Need Any Help?</a>
@@ -73,6 +74,7 @@ mysqli_close($conn);
 		</div>
 	</section>
 
-    <?php include "footer.php"; ?>
+	<?php include "footer.php"; ?>
 </body>
+
 </html>

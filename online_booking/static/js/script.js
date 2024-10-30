@@ -83,7 +83,46 @@ function toggleSlotSelection(cell) {
 		selectedSlots.push(slotId);
 		cell.classList.add("selected");
 	}
+
+	const result = checkContinuousTimeSlots(selectedSlots);
+	console.log('result', result)
+	if (typeof result === "string") {
+		console.log(result); // Outputs if slots are not continuous
+	} else {
+		console.log("Start:", result.start);
+		console.log("End:", result.end);
+	}
 }
+
+function checkContinuousTimeSlots(selectedSlots) {
+	if (selectedSlots.length === 0) {
+		return "No time slots selected.";
+	}
+
+	// Parse selected slots into Date objects
+	const parsedSlots = selectedSlots.map((slot) => {
+		const [date, time] = slot.split(" ");
+		return new Date(`${date}T${time}`);
+	});
+
+	// Sort the parsed slots
+	parsedSlots.sort((a, b) => a - b);
+
+	// Check if each slot is exactly 30 minutes after the previous one
+	for (let i = 1; i < parsedSlots.length; i++) {
+		const differenceInMinutes = (parsedSlots[i] - parsedSlots[i - 1]) / (1000 * 60);
+		if (differenceInMinutes !== 30) {
+			return "Selected slots are not continuous.";
+		}
+	}
+
+	// If slots are continuous, return the start and end datetime
+	const start = parsedSlots[0];
+	const end = new Date(parsedSlots[parsedSlots.length - 1].getTime() + 30 * 60 * 1000); // Add 30 minutes to last slot
+
+	return { start, end };
+}
+
 
 // Initial render with today's date
 const today = new Date();
