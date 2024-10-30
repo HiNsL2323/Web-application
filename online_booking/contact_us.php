@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
 	<link rel="stylesheet" href="css/layout.css">
-	<title>Shopline</title>
+	<title>Contact us</title>
 	<style>
 		* {
 			box-sizing: border-box;
@@ -73,7 +73,7 @@
 					<img src="img/widget/frontdesk.jpg" style="width:100%">
 				</div>
 				<div class="column">
-					<form action='add_comment.php' method='POST'>
+					<form action='#.php' method='POST'>
 						<label for="firstname">First Name</label>
 						<input type="text" id="firstname" name="firstname" placeholder="Your name..">
 						<label for="lastname">Last Name</label>
