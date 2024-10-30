@@ -57,6 +57,46 @@
             margin-top: -15px;
             margin-bottom: 15px;
         }
+        .success {
+            color: green;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -64,51 +104,50 @@
     <div class="register-page">
         <h2>Register</h2>
         <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $lastName = $_POST['lastName'];
-        $firstName = $_POST['firstName'];
-        $mailingAddress = $_POST['mailingAddress'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $memberID = $_POST['memberID'];
-        $emailAddress = $_POST['emailAddress'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
+        $errorMessage = "";
+        $successMessage = "";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $lastName = $_POST['lastName'];
+            $firstName = $_POST['firstName'];
+            $mailingAddress = $_POST['mailingAddress'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $memberID = $_POST['memberID'];
+            $emailAddress = $_POST['emailAddress'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
 
+            $conn = mysqli_connect($db_servername, $db_username, $db_password, $db_name);
 
-        $conn = mysqli_connect($db_servername, $db_username, $db_password, $db_name);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } else {
-            echo "";
+            // Check if email already exists
+            $emailCheckSql = "SELECT * FROM member WHERE emailAddress = '$emailAddress'";
+            $emailCheckResult = $conn->query($emailCheckSql);
+
+            // Check if member ID already exists
+            $memberIDCheckSql = "SELECT * FROM member WHERE memberID = '$memberID'";
+            $memberIDCheckResult = $conn->query($memberIDCheckSql);
+
+            if ($emailCheckResult->num_rows > 0) {
+                $errorMessage = "Email address already exists. Please use a different one.";
+            } elseif ($memberIDCheckResult->num_rows > 0) {
+                $errorMessage = "Member ID already exists. Please use a different one.";
+            } else {
+                // Insert new record
+                $sql = "INSERT INTO member (lastName, firstName, mailingAddress, phoneNumber, memberID, emailAddress, password)
+                        VALUES ('$lastName', '$firstName', '$mailingAddress', '$phoneNumber', '$memberID', '$emailAddress', '$password')";
+
+                if ($conn->query($sql) === TRUE) {
+                    $successMessage = "New record created successfully";
+                } else {
+                    $errorMessage = "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
+            $conn->close();
         }
-        
-      // Check if email already exists
-      $emailCheckSql = "SELECT * FROM member WHERE emailAddress = '$emailAddress'";
-      $emailCheckResult = $conn->query($emailCheckSql);
-
-      // Check if member ID already exists
-      $memberIDCheckSql = "SELECT * FROM member WHERE memberID = '$memberID'";
-      $memberIDCheckResult = $conn->query($memberIDCheckSql);
-
-      if ($emailCheckResult->num_rows > 0) {
-          echo "Email address already exists. Please use a different one.";
-      } elseif ($memberIDCheckResult->num_rows > 0) {
-          echo "Member ID already exists. Please use a different one.";
-      } else {
-          // Insert new record
-          $sql = "INSERT INTO member (lastName, firstName, mailingAddress, phoneNumber, memberID, emailAddress, password)
-                  VALUES ('$lastName', '$firstName', '$mailingAddress', '$phoneNumber', '$memberID', '$emailAddress', '$password')";
-
-          if ($conn->query($sql) === TRUE) {
-              echo "New record created successfully";
-          } else {
-              echo "Error: " . $sql . "<br>" . $conn->error;
-          }
-      }
-        $conn->close();
-    }
-    ?>
+        ?>
         <form action="" method="post">
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName" required>
@@ -134,6 +173,62 @@
             <input type="submit" value="Register">
         </form>
     </div>
+
+    <!-- Modal for error messages -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <p id="errorMessage" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Modal for success messages -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <p id="successMessage" class="success"></p>
+        </div>
+    </div>
+
     <?php include "footer.php"; ?>
+
+    <script>
+        // Get the modals
+        var errorModal = document.getElementById("errorModal");
+        var successModal = document.getElementById("successModal");
+        var errorMessage = "<?php echo $errorMessage; ?>";
+        var successMessage = "<?php echo $successMessage; ?>";
+
+        // Get the <span> elements that close the modals
+        var closeButtons = document.getElementsByClassName("close");
+
+        // When the user clicks on <span> (x), close the modal
+        for (var i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                errorModal.style.display = "none";
+                successModal.style.display = "none";
+            }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == errorModal) {
+                errorModal.style.display = "none";
+            }
+            if (event.target == successModal) {
+                successModal.style.display = "none";
+            }
+        }
+
+        // Show the appropriate modal if there's a message
+        if (errorMessage) {
+            document.getElementById("errorMessage").innerText = errorMessage;
+            errorModal.style.display = "block";
+        }
+        if (successMessage) {
+            document.getElementById("successMessage").innerText = successMessage;
+            successModal.style.display = "block";
+        }
+    </script>
 </body>
 </html>
