@@ -54,7 +54,7 @@
 </head>
 <body>
     <?php
-    // Include the navbar which starts the session
+    // Include the navbar
     include "navbar.php";
 
     // Check if user is logged in
@@ -63,13 +63,11 @@
         exit();
     }
 
-    // Database connection
+    // connect to DB
     include 'DBconn.php';
 
-    // Get the logged-in user's email address
     $emailAddress = $_SESSION['loginUser'];
 
-    // Fetch member data based on email address using prepared statements
     $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 
     // Check connection

@@ -199,10 +199,8 @@
         var errorMessage = "<?php echo $errorMessage; ?>";
         var successMessage = "<?php echo $successMessage; ?>";
 
-        // Get the <span> elements that close the modals
         var closeButtons = document.getElementsByClassName("close");
 
-        // When the user clicks on <span> (x), close the modal
         for (var i = 0; i < closeButtons.length; i++) {
             closeButtons[i].onclick = function() {
                 errorModal.style.display = "none";
@@ -210,7 +208,6 @@
             }
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == errorModal) {
                 errorModal.style.display = "none";
@@ -220,7 +217,7 @@
             }
         }
 
-        // Show the appropriate modal if there's a message
+        // Show the message
         if (errorMessage) {
             document.getElementById("errorMessage").innerText = errorMessage;
             errorModal.style.display = "block";

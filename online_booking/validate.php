@@ -41,7 +41,6 @@
     } else {
         echo 'Error: Form not submitted correctly.';
     }
-    // Close database connection
     mysqli_close($conn);
 ?>
   
