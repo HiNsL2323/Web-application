@@ -32,7 +32,7 @@ mysqli_close($conn);
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
-	<link rel="stylesheet" href="css/roomDetail.css">
+	<link rel="stylesheet" href="static/css/roomDetail.css">
 	<title>Rooms</title>
 </head>
 
@@ -70,10 +70,8 @@ mysqli_close($conn);
 
 				<!--btn-->
 				<div class="room-button">
-                    <a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-wishlist-btn">Check Available Room</a>
+                    <a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-room-btn">Check Available Room</a>
 				</div>
-				<!--help-btn-->
-				<a href="#" class="help-btn">Need Any Help?</a>
 			</div>
 		</div>
 	</section>
