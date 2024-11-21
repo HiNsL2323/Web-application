@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2024 at 02:54 PM
+-- Generation Time: Nov 21, 2024 at 12:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,7 +34,7 @@ CREATE TABLE `booking` (
   `reservedEndDate` datetime NOT NULL,
   `reservedStartTime` datetime NOT NULL,
   `reservedEndTime` datetime NOT NULL,
-  `memberID` varchar(10) NOT NULL,
+  `memberID` int(10) NOT NULL,
   `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -49,7 +49,7 @@ CREATE TABLE `member` (
   `firstName` varchar(200) NOT NULL,
   `mailingAddress` varchar(200) NOT NULL,
   `phoneNumber` varchar(200) NOT NULL,
-  `memberID` varchar(10) NOT NULL,
+  `memberID` int(10) NOT NULL,
   `emailAddress` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -59,8 +59,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`lastName`, `firstName`, `mailingAddress`, `phoneNumber`, `memberID`, `emailAddress`, `password`) VALUES
-('Cheung', 'Victor', 'taipo', '12345678', '0000000001', 'VictorCheung@testing.com', '123456'),
-('Cheung', 'Victor', 'taipo', '12345678', '0000000002', 'VictorCheung', '123');
+('admin', 'super', 'Room A, Floor 10,\r\nABC Building,\r\nHello World Street,\r\nHK', '12345678', 1, 'admin@testing.com', '$2y$10$Y7Go6CL35CFEHhh7xcaNpuMjm2E9Kms6RGHlVKCszvEy7PtjbteBq');
 
 -- --------------------------------------------------------
 
@@ -128,6 +127,16 @@ ALTER TABLE `room`
 --
 ALTER TABLE `room_details`
   ADD PRIMARY KEY (`roomGrade`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `member`
+--
+ALTER TABLE `member`
+  MODIFY `memberID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
