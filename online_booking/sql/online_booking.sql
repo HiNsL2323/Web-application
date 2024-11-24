@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 12:24 PM
+-- Generation Time: Nov 24, 2024 at 05:38 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,6 +35,22 @@ CREATE TABLE `booking` (
   `reservedStartTime` datetime NOT NULL,
   `reservedEndTime` datetime NOT NULL,
   `memberID` int(10) NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `commentID` varchar(10) NOT NULL,
+  `memberID` int(10) DEFAULT NULL,
+  `guestEmail` varchar(200) DEFAULT NULL,
+  `guestFirstName` varchar(200) DEFAULT NULL,
+  `guestLastName` varchar(200) DEFAULT NULL,
+  `commentText` text NOT NULL,
   `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -89,25 +105,6 @@ CREATE TABLE `room_details` (
 -- Dumping data for table `room_details`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `comment`
---
-CREATE TABLE comment (
-    commentID varchar(10),
-    memberID int(10),
-    guestEmail varchar(200),
-    guestFirstName varchar(200),
-    guestLastName varchar(200),
-    commentText text NOT NULL,
-    created datetime NOT NULL,
-    PRIMARY KEY (commentID),
-    FOREIGN KEY (memberID) REFERENCES member(memberID)
-);
---
--- Dumping data for table `room_details`
---
 INSERT INTO `room_details` (`roomGrade`, `roomSpec`, `roomPrice`, `roomIMG`) VALUES
 ('Deluxe', 'Deluxe Spec\r\n\r\nBed x2\r\nBathroom x2\r\n...', 800.00, 'Deluxe-01.jpg'),
 ('Executive', 'Executive Spec\r\n\r\nBed x3\r\n...', 1000.00, 'Executive-01.jpg'),
@@ -125,6 +122,13 @@ INSERT INTO `room_details` (`roomGrade`, `roomSpec`, `roomPrice`, `roomIMG`) VAL
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`bookingID`),
   ADD KEY `roomNumber` (`roomNumber`),
+  ADD KEY `memberID` (`memberID`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`commentID`),
   ADD KEY `memberID` (`memberID`);
 
 --
@@ -167,6 +171,12 @@ ALTER TABLE `member`
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`roomNumber`) REFERENCES `room` (`roomNumber`),
   ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`);
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`);
 
 --
 -- Constraints for table `room`
