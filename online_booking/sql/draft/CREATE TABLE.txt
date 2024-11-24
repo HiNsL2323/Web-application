@@ -39,3 +39,15 @@ CREATE TABLE booking (
 	FOREIGN KEY (roomNumber) REFERENCES room(roomNumber),
 	FOREIGN KEY (memberID) REFERENCES member(memberID)
 );
+
+CREATE TABLE comment (
+    commentID varchar(10),
+    memberID int(10),
+    guestEmail varchar(200),
+    guestFirstName varchar(200),
+    guestLastName varchar(200),
+    commentText text NOT NULL,
+    created datetime NOT NULL,
+    PRIMARY KEY (commentID),
+    FOREIGN KEY (memberID) REFERENCES member(memberID)
+);
