@@ -89,6 +89,25 @@ CREATE TABLE `room_details` (
 -- Dumping data for table `room_details`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+CREATE TABLE comment (
+    commentID varchar(10),
+    memberID int(10),
+    guestEmail varchar(200),
+    guestFirstName varchar(200),
+    guestLastName varchar(200),
+    commentText text NOT NULL,
+    created datetime NOT NULL,
+    PRIMARY KEY (commentID),
+    FOREIGN KEY (memberID) REFERENCES member(memberID)
+);
+--
+-- Dumping data for table `room_details`
+--
 INSERT INTO `room_details` (`roomGrade`, `roomSpec`, `roomPrice`, `roomIMG`) VALUES
 ('Deluxe', 'Deluxe Spec\r\n\r\nBed x2\r\nBathroom x2\r\n...', 800.00, 'Deluxe-01.jpg'),
 ('Executive', 'Executive Spec\r\n\r\nBed x3\r\n...', 1000.00, 'Executive-01.jpg'),
