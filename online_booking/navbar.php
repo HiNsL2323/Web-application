@@ -158,7 +158,7 @@ mysqli_close($conn);
 			<ul class="list-item">
 				<li><a href="home.php">Home</a></li>
 				<li class="dropdown">
-					<a href="#">Rooms</a>
+					<a href="rooms.php">Rooms</a>
 					<ul class="dropdown-menu">
 						<?php
 						if (mysqli_num_rows($result) > 0) {
@@ -172,14 +172,15 @@ mysqli_close($conn);
 				<li><a href="reservation.php">Reservation</a></li>
 				<li><a href="contact_us.php">Contact us</a></li>
 				<li class="dropdown">
-					<!-- <a href="#"> -->
 						<?php
-						// Check login status
 							if (isset($_SESSION['loginUser'])) {
 								echo "<a>" . $_SESSION['loginUser'] . "</a>";
 								echo "<ul class='dropdown-menu'>
 									<li>
 										<a href='my_member_page.php'>My Member</a>
+									</li>
+									<li>
+										<a href='my_booking_page.php'>My Booking</a>
 									</li>
 									<li>
 										<a href='logout.php'>Logout</a>
@@ -188,7 +189,6 @@ mysqli_close($conn);
 							} else {
 								echo "<a href='login.php'>Login</a>";
 							}?>
-					<!-- </a>-->
 				
 				</li>
 		</nav>
