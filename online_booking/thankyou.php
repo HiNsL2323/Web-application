@@ -1,14 +1,3 @@
-<?php
-	session_start();
-	if (isset($_SESSION['bill_number'])) {
-		$bill_number = $_SESSION['bill_number'];
-		// Clear the bill number from the session
-		unset($_SESSION['bill_number']);
-	} else {
-		header("Location: cart.php");
-		exit();
-	}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
 	<link rel="stylesheet" href="static/css/layout.css">
-	<title>Purchase Complete!</title>
+	<title>Booking Complete!</title>
 	<style>
 		*{
 		box-sizing:border-box;
-		/* outline:1px solid ;*/
 		}
 		body{
 		background: #ffffff;
@@ -120,15 +108,18 @@
 			<div class="wrapper-2">
 			<h1>Thank you !</h1>
 			<p>Details will be sent to your email, </p>
-			<p>feel free to contact info@shopline.com.  </p>
+			<p>feel free to contact info@DreamcatcherPalace.com  </p>
 			<a href="home.php" >
 				<button class="go-home">
-					Go Home
+					Home Page
 				</button>
 			</a>
 			</div>
 			<div class="footer-like">
-			<p>Bill Number: <?php echo $bill_number; ?> </p>
+			<p>Booking ID: <?php echo $bookingID; ?> </p>
+			<p>Room Number: <?php echo $roomNumbre; ?> </p>
+			<p>Check In Date: <?php echo $reservedStartDate	; ?> </p>
+			<p>Check Out Date: <?php echo $reservedEndDate; ?> </p>
 			</div>
 		</div>
 	</div>
