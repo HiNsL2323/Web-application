@@ -96,7 +96,7 @@ CREATE TABLE `room` (
 
 CREATE TABLE `room_details` (
   `roomGrade` varchar(20) NOT NULL,
-  `roomSpec` varchar(200) NOT NULL,
+  `roomSpec` varchar(600) NOT NULL,
   `roomPrice` decimal(10,2) NOT NULL,
   `roomIMG` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -106,11 +106,11 @@ CREATE TABLE `room_details` (
 --
 
 INSERT INTO `room_details` (`roomGrade`, `roomSpec`, `roomPrice`, `roomIMG`) VALUES
-('Deluxe', 'Deluxe Spec\r\n\r\nBed x2\r\nBathroom x2\r\n...', 800.00, 'Deluxe-01.jpg'),
-('Executive', 'Executive Spec\r\n\r\nBed x3\r\n...', 1000.00, 'Executive-01.jpg'),
-('Presidential', 'Presidential Spec\r\n\r\ntesting 123\r\n...', 3000.00, 'Presidential-01.jpg'),
-('Standard', 'Standard Spec\r\n\r\n123456\r\nabcde\r\n....', 500.00, 'Standard-01.jpg'),
-('Suite', 'Suite Spec\r\n\r\ntesting abc 123....\r\n...', 1500.00, 'Suite-01.jpg');
+('Deluxe', 'Deluxe Rooms offer deluxe and detailed settings for every fabric. The room is designed to be as relaxing as possible, the extra space in the room is crucial for a comfortable stay.\r\n\r\nRoom details:\r\n1 Queen size bed,\r\n1 Bathroom,\r\nAccommodation for 2 adults,\r\nHigh-speed Wi-Fi, In-room TV, \r\nand Work desk with an ergonomic chair', 800.00, 'Deluxe-01.jpg'),
+('Executive', 'Executive rooms offer business-class luxury fully equipped with IoTs, which let our guests set up the room with ease. The spacious room also has all kinds of designer furniture.\r\n\r\nRoom details:\r\n1 King size bed,\r\n2 Bathroom,\r\nAccommodation for 2 adults,\r\n1 Gbps Wi-Fi, In-room TV with all world channels, \r\nand Work desk with top-of-the-line computers.', 1000.00, 'Executive-01.jpg'),
+('Presidential', 'Presidential rooms are world-class standard rooms in terms of luxury and space. The 2500 sq. ft room will provide in-room spas, a gym, a movie room, and more. The private entertainment and luxurious comfort will grant you the best stay.\r\n\r\nRoom details:\r\n4 King size beds,\r\n4 Bathroom,\r\nAccommodation for 8 adults,\r\n1 Gbps Wi-Fi, In-room TV with all world channels, \r\nand 2 Work desks with top-of-the-line computers.', 3000.00, 'Presidential-01.jpg'),
+('Standard', 'Standard Rooms offer basic luxury for both leisure and business travelers. Every room has enormous windows that capture the scenic ocean view.\r\n\r\nRoom details:\r\n1 Queen size bed,\r\n1 Bathroom,\r\nAccommodation for 2 adults,\r\nHigh-speed Wi-Fi, In-room TV, \r\nand Work desk with an ergonomic chair', 500.00, 'Standard-01.jpg'),
+('Suite', 'Suite rooms are designed to provide luxury with as much space as possible. The separated living and sleeping areas, allow guests to entertain families or visitors and relax in a more spacious environment.\r\n\r\nRoom details:\r\n2 King size beds,\r\n1 Queen size bed,\r\n3 Bathroom,\r\nAccommodation for 6 adults,\r\n1 Gbps Wi-Fi, In-room TV with all world channels, \r\nand 2 Work desks with top-of-the-line computers.', 1500.00, 'Suite-01.jpg');
 
 --
 -- Indexes for dumped tables
