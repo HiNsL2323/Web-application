@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon1.ico">
 	<link rel="stylesheet" href="static/css/layout.css">
 	<title>Dreamcatcher Palace</title>
 </head>
@@ -65,7 +65,7 @@
 			<br>
 			<p style="font-family:Times new roman; letter-spacing:0.45px;">
 				At SHOPLINE, your satisfaction is our priority therefore feel free to email any of your concerns and questions
-				to <font color=blue>info@Dreamcatcher Palace.com</font>.</p><br>
+				to <font color=blue>info@DreamcatcherPalace.com</font>.</p><br>
 			<p style="letter-spacing:0.6px;"><i><b>Enjoy our hotel service at Dreamcatcher Palace!</b></i></p><br>
 		</div>
 	</div>
