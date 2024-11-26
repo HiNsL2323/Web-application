@@ -19,7 +19,7 @@ mysqli_close($conn);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon1.ico">
 	<link rel="stylesheet" href="static/css/layout.css">
 	<title>Dreamcatcher Palace</title>
 	<style>
@@ -152,7 +152,7 @@ mysqli_close($conn);
 	<span class="navbar">
 		<nav>
 			<div class="logo">
-				<a href="home.php"><img src="static/img/shopline/logo.png" /></a>
+				<a href="home.php"><img src="static/img/logo/logo.png" /></a>
 			</div>
 
 			<ul class="list-item">
