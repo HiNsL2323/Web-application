@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2024 at 05:38 PM
+-- Generation Time: Nov 26, 2024 at 04:52 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,23 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `online_booking`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `booking`
---
-
-CREATE TABLE `booking` (
-  `bookingID` varchar(10) NOT NULL,
-  `roomNumber` int(4) NOT NULL,
-  `reservedStartDate` datetime NOT NULL,
-  `reservedEndDate` datetime NOT NULL,
-  `reservedStartTime` datetime NOT NULL,
-  `reservedEndTime` datetime NOT NULL,
-  `memberID` int(10) NOT NULL,
-  `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -80,12 +63,17 @@ INSERT INTO `member` (`lastName`, `firstName`, `mailingAddress`, `phoneNumber`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `room`
+-- Table structure for table `reservation`
 --
 
-CREATE TABLE `room` (
-  `roomNumber` int(4) NOT NULL,
-  `roomGrade` varchar(10) NOT NULL
+CREATE TABLE `reservation` (
+  `id` int(11) NOT NULL,
+  `roomGrade` varchar(255) NOT NULL,
+  `checkIn` datetime NOT NULL,
+  `checkOut` datetime NOT NULL,
+  `emailAddress` varchar(255) NOT NULL,
+  `totalCost` decimal(10,2) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -117,14 +105,6 @@ INSERT INTO `room_details` (`roomGrade`, `roomSpec`, `roomPrice`, `roomIMG`) VAL
 --
 
 --
--- Indexes for table `booking`
---
-ALTER TABLE `booking`
-  ADD PRIMARY KEY (`bookingID`),
-  ADD KEY `roomNumber` (`roomNumber`),
-  ADD KEY `memberID` (`memberID`);
-
---
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
@@ -139,11 +119,12 @@ ALTER TABLE `member`
   ADD UNIQUE KEY `emailAddress` (`emailAddress`);
 
 --
--- Indexes for table `room`
+-- Indexes for table `reservation`
 --
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`roomNumber`),
-  ADD KEY `roomGrade` (`roomGrade`);
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `roomGrade` (`roomGrade`),
+  ADD KEY `emailAddress` (`emailAddress`);
 
 --
 -- Indexes for table `room_details`
@@ -162,15 +143,14 @@ ALTER TABLE `member`
   MODIFY `memberID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `reservation`
 --
+ALTER TABLE `reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `booking`
+-- Constraints for dumped tables
 --
-ALTER TABLE `booking`
-  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`roomNumber`) REFERENCES `room` (`roomNumber`),
-  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`);
 
 --
 -- Constraints for table `comment`
@@ -179,27 +159,13 @@ ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`);
 
 --
--- Constraints for table `room`
+-- Constraints for table `reservation`
 --
-ALTER TABLE `room`
-  ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`roomGrade`) REFERENCES `room_details` (`roomGrade`);
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`roomGrade`) REFERENCES `room_details` (`roomGrade`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`emailAddress`) REFERENCES `member` (`emailAddress`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
-
-CREATE TABLE reservation (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    roomGrade VARCHAR(255) NOT NULL,
-    checkIn DATETIME NOT NULL,
-    checkOut DATETIME NOT NULL,
-    emailAddress VARCHAR(255) NOT NULL,
-		totalCost DECIMAL(10, 2) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (roomGrade) REFERENCES room_details(roomGrade) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (emailAddress) REFERENCES member(emailAddress) ON DELETE CASCADE ON UPDATE CASCADE
-);
