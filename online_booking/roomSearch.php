@@ -16,7 +16,7 @@ $emailAddress = $_POST['emailAddress'];
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon1.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
 	<link rel="stylesheet" href="static/css/roomDetail.css">
 	<title>Reserve</title>
 </head>
@@ -73,8 +73,6 @@ $emailAddress = $_POST['emailAddress'];
 	$stmt->bind_param("ssssd", $roomGrade, $checkIn, $checkOut, $emailAddress, $totalCost);
 
 	if ($stmt->execute()) {
-		echo "Reservation successfully saved!";
-
 		$reservationData = [
 			"roomGrade" => $roomGrade,
 			"checkIn" => $checkIn,
@@ -101,18 +99,15 @@ $emailAddress = $_POST['emailAddress'];
 		];
 		$context = stream_context_create($options);
 		$result = @file_get_contents($url, false, $context);
+		
 		if ($result === FALSE) {
 			echo "Error sending data to Node.js server.";
 		} else {
-			$response = json_decode($result, true);
-			if ($response && isset($response['message'])) {
-				echo htmlspecialchars($response['message']); // Display the response message
-			} else {
-				echo "Data sent to Node.js server successfully, but no html received.";
-			}
+			echo $result;  // Display the HTML page from Node.js
 		}
 	}
-
+	
+	
 	$checkStmt->close();
 	$priceStmt->close();
 	$stmt->close();
