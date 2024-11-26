@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon1.ico">
 	<link rel="stylesheet" href="static/css/layout.css">
 	<title>Booking Complete!</title>
 	<style>
