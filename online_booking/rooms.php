@@ -62,7 +62,7 @@ mysqli_close($conn);
 				echo "
 						<span class=\"room-category\">Grade</span>
 						<h3>{$row['roomGrade']}</h3>
-                        <span class=\"room-price\">{$row['roomPrice']}</span>
+                                                HK$ <span class=\"room-price\">{$row['roomPrice']}</span> per nights
                     ";
 				$spec = $row['roomSpec'];
 				echo "<p>" . nl2br($spec) . "</p>";
