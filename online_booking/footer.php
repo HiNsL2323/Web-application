@@ -125,9 +125,8 @@
 				<div class="logo-text">Dreamcatcher Palace</div>
 			</div>
 			<div class="footer-box">
-				<div class="footer-text">Shop the world, wear the world</div>
-				<div class="footer-text text-small">Let us help you discover, shop, and explore <br /> the world of fashion with
-					special deals</div>
+				<div class="footer-text">In our Palace, Catch your Dream</div>
+				<div class="footer-text text-small">Subscribe to our newsletter</br> for future promotion and more</div>
 				<div id="email-box">
 					<input type="email" name="email" placeholder="Enter your email address" class="email-input">
 					<button style="margin:0px" type="submit" onclick="updateContent()" class="subscribe-button">Subscribe</button>
