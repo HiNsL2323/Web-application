@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon1.ico">
 	<link rel="stylesheet" href="static/css/layout.css">
 	<style>
 		body {
@@ -125,7 +125,7 @@
 				<div class="logo-text">Dreamcatcher Palace</div>
 			</div>
 			<div class="footer-box">
-				<div class="footer-text">In our Palace, Catch your Dream</div>
+				<div class="footer-text">Catch your Dream in our Palace</div>
 				<div class="footer-text text-small">Subscribe to our newsletter</br> for future promotion and more</div>
 				<div id="email-box">
 					<input type="email" name="email" placeholder="Enter your email address" class="email-input">
