@@ -1,3 +1,25 @@
+<?php
+include "navbar.php";
+
+if (!isset($_SESSION['loginUser'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'DBconn.php';
+
+$emailAddress = $_SESSION['loginUser'];
+
+$sql = "SELECT id, roomGrade, checkIn, checkOut, totalCost 
+        FROM reservation 
+        WHERE emailAddress = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $emailAddress);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,65 +70,30 @@
     </style>
 </head>
 <body>
-    <?php
-    include "navbar.php";
-
-    if (!isset($_SESSION['loginUser'])) {
-        header("Location: login.php");
-        exit();
-    }
-
-    include 'DBconn.php';
-
-    $emailAddress = $_SESSION['loginUser'];
-
-    $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $memberSql = "SELECT memberID FROM member WHERE emailAddress = ?";
-    $memberStmt = $conn->prepare($memberSql);
-    $memberStmt->bind_param("s", $emailAddress);
-    $memberStmt->execute();
-    $memberResult = $memberStmt->get_result();
-    
-    if ($memberResult->num_rows > 0) {
-        $memberData = $memberResult->fetch_assoc();
-        $memberID = $memberData['memberID'];
-        
-
-        $bookingSql = "SELECT bookingID, roomNumber, reservedStartDate, reservedEndDate 
-                      FROM booking 
-                      WHERE memberID = ?";
-        $bookingStmt = $conn->prepare($bookingSql);
-        $bookingStmt->bind_param("i", $memberID);
-        $bookingStmt->execute();
-        $bookingResult = $bookingStmt->get_result();
-
-        echo '<div class="booking-page">';
-        echo '<h1>Booking Information</h1>';
-        echo '<div class="booking-info">';
-        
-        if ($bookingResult->num_rows > 0) {
-            $booking = $bookingResult->fetch_assoc();
-            echo '<p><strong>Booking ID:</strong> ' . htmlspecialchars($booking['bookingID']) . '</p>';
-            echo '<p><strong>Room Number:</strong> ' . htmlspecialchars($booking['roomNumber']) . '</p>';
-            echo '<p><strong>Reserved Start Date:</strong> ' . htmlspecialchars($booking['reservedStartDate']) . '</p>';
-            echo '<p><strong>Reserved End Date:</strong> ' . htmlspecialchars($booking['reservedEndDate']) . '</p>';
-        } else {
-            echo '<p>You do not have a booking.</p>';
-        }
-        
-        echo '</div></div>';
-        
-        $bookingStmt->close();
-    }
-
-    $memberStmt->close();
-    $conn->close();
-    ?>
+    <div class="booking-page">
+        <h1>Booking Information</h1>
+        <div class="booking-info">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($reservation = $result->fetch_assoc()) {
+                    echo '<p><strong>Booking ID:</strong> ' . htmlspecialchars($reservation['id']) . '</p>';
+                    echo '<p><strong>Room Grade:</strong> ' . htmlspecialchars($reservation['roomGrade']) . '</p>';
+                    echo '<p><strong>Check-In:</strong> ' . htmlspecialchars($reservation['checkIn']) . '</p>';
+                    echo '<p><strong>Check-Out:</strong> ' . htmlspecialchars($reservation['checkOut']) . '</p>';
+                    echo '<p><strong>Total Cost:</strong> $' . htmlspecialchars($reservation['totalCost']) . '</p>';
+                    echo '<hr>';
+                }
+            } else {
+                echo '<p>You do not have any bookings.</p>';
+            }
+            ?>
+        </div>
+    </div>
     <?php include "footer.php"; ?>
 </body>
 </html>
+
+<?php
+$stmt->close();
+$conn->close();
+?>
