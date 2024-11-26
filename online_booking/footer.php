@@ -121,7 +121,7 @@
 				</div>
 			</div>
 			<div class="footer-box">
-				<div class="footer-logo"><img src="static/img/shopline/logo_dream.png" /></div>
+				<div class="footer-logo"><img src="static/img/logo/logo_dream.png" /></div>
 				<div class="logo-text">Dreamcatcher Palace</div>
 			</div>
 			<div class="footer-box">
