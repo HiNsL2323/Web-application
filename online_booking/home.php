@@ -21,28 +21,29 @@
 					<td>
 						<p style="font-size:25px; font-family:courier;">About Dreamcatcher Palace</p><br>
 						<p style="font-family:Times new roman; line-height:1.4; letter-spacing:0.3px;">
-							SHOPLINE was founded in 2023 by a group of people who are passionate
-							with fashion and essential products. The creation of this website aims to reach everyone
-							who also loves fashion and essential items. This is a website that allows you to
-							purchase a wide variety of stylish and trendy items that come from around the
-							globe with products like wallets, watches, and bags. We strive to bring products that
-							comes from top brands and provides a user-friendly platform for everyone. We also
-							aim to bring convenience to our customers by utilizing online payment technology
-							and global shipping. You can exploit the advantage of flexibility with online
-							shopping and buying whenever you want, wherever you are. </p>
+							Welcome to Dreamcatcher Palace, a hotel founded in 2023 with a vision to redefine 
+							hospitality with world-class luxury. We strive to help everyone who seek breathtaking 
+							landscapes and vibrant city life in the hotel. Dreamcatcher Palace is where dreams
+							and reality meets, offering an unforgettable experience for every traveler.
+							From the moment you step into our grand lobby, you are greeted by an atmosphere that 
+							is both luxury and inviting. Our dedicated team is committed to providing the best
+							service and ensuring that every stay is no short of extraordinary. At Dreamcatcher
+							Palace, we pride ourselves on attention to detail, personalized service, and a warm,
+							welcoming atmosphere that makes you feel right at home.</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<p style="font-family:Times new roman; line-height:1.4; letter-spacing:0.3px;">
-							In SHOPLINE, you can browse through every product and learn through the
-							product details before you make a decision. With this well-designed website, you
-							can navigate through the toolbar and look for the category that interests you.
-							Then, you will be able to look for every item from that specific category and
-							with the option to add to the cart. After choosing your favorites, head to the cart and
-							you can check what item you have selected and you can check from
-							there. This very brief explanation of how this online shop works shows you that
-							with a few clicks, the item that you wanted will be delivered to your home within 2-3 working days.</p>
+							Our hotel provides a diverse selection of rooms designed to cater to the unique 
+							needs and preferences of our guests. Whether you're here for a business trip, 
+							a honey moon, or a family vacation, our five types of rooms offer something 
+							for everyone. Standard, Deluxe, Executive, Suite, and Presidential. Each rooms with
+							its own identity suits every types of traveler. Everything you needs, we will provide.
+							From a simple and cozy night in the Standard room to the ultimate luxury state-of-art of Presidential
+							Room, all can be found in Dreamcatcher Palace. A Palace with five stars dining and all 
+							kinds of entertainment around the hotel. Host your next event at Dreamcatcher Palace with ease
+							as we will provide dedicated event planners which will ensure every details and requests being executed.</p>
 					</td>
 					<td>
 						<img src="static/img/home/home2.jpg" style="padding:5px; width:450px ;height:280px" />
@@ -53,20 +54,19 @@
 					</td>
 					<td>
 						<p style="font-family:Times new roman; line-height:1.4; letter-spacing:0.45px;">
-							All in all, our team hopes that we can gather fashion lovers around the globe by
-							introducing SHOPLINE online shop. As we are the provider of this platform for
-							everyone, we understand that we carry the responsibility to bring the best service out of this website.
-							Therefore, we promise to keep updating the website and conduct maintenance for the SHOPLINE website from
-							time to time.
-							In the end, please do join us today and explore the service and passion that SHOPLINE provides.</p>
+							At Dreamcatcher Palace, every moment is crafted to be remembered. We hope to
+							provide everything you wanted while having a stay at Dreamcatcher Palace.
+							We invite you to discover a world where luxury meets comfort, and every 
+							stay is a cherished memory waiting to be made. Come and experience the 
+							magic of Dreamcatcher Palace – where dreams truly come alive.</p>
 					</td>
 				</tr>
 			</table>
 			<br>
 			<p style="font-family:Times new roman; letter-spacing:0.45px;">
-				At SHOPLINE, your satisfaction is our priority therefore feel free to email any of your concerns and questions
+				At Dreamcatcher Palace, your satisfaction is our priority therefore feel free to email any of your concerns and questions
 				to <font color=blue>info@DreamcatcherPalace.com</font>.</p><br>
-			<p style="letter-spacing:0.6px;"><i><b>Enjoy our hotel service at Dreamcatcher Palace!</b></i></p><br>
+			<p style="letter-spacing:0.6px;"><i><b>See you soon at Dreamcatcher Palace!</b></i></p><br>
 		</div>
 	</div>
 	<?php include "footer.php"; ?>
