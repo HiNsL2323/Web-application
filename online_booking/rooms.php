@@ -39,7 +39,7 @@ mysqli_close($conn);
 <body>
 	<?php include "navbar.php"; ?>
 
-    <!-- Rooms Details -->
+	<!-- Rooms Details -->
 	<section id="room-page">
 		<div class="room-details">
 			<!-- IMG -->
@@ -49,7 +49,7 @@ mysqli_close($conn);
 				<div class="swiper mySwiper">
 					<div class="swiper-slide">
 						<?php
-						    echo "<img src='static/img/rooms/{$row['roomIMG']}' />";
+						echo "<img src='static/img/rooms/{$row['roomIMG']}' />";
 						?>
 					</div>
 				</div>
@@ -59,23 +59,25 @@ mysqli_close($conn);
 			<div class="room-text">
 				<!-- Room Grade-->
 				<?php
-				    echo "
-			            <span class=\"room-category\">Grade</span>
-			            <h3>{$row['roomGrade']}</h3>
+				echo "
+						<span class=\"room-category\">Grade</span>
+						<h3>{$row['roomGrade']}</h3>
                         <span class=\"room-price\">{$row['roomPrice']}</span>
                     ";
-                    $spec = $row['roomSpec'];
-                    echo "<p>".nl2br($spec)."</p>";
+				$spec = $row['roomSpec'];
+				echo "<p>" . nl2br($spec) . "</p>";
 				?>
 
 				<!--btn-->
 				<div class="room-button">
-                    <a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-room-btn">Check Available Room</a>
+					<a href="reservation.php?roomGrade=<?php echo $row['roomGrade'] ?>" class="add-room-btn">Check Available
+						Room</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-    <?php include "footer.php"; ?>
+	<?php include "footer.php"; ?>
 </body>
+
 </html>

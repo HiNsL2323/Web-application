@@ -169,7 +169,7 @@ mysqli_close($conn);
 						?>
 					</ul>
 				</li>
-				<li><a href="reservation.php">Reservation</a></li>
+				<li><a href="reservation.php?roomGrade=Presidential">Reservation</a></li>
 				<li><a href="contact_us.php">Contact us</a></li>
 				<li class="dropdown">
 						<?php
