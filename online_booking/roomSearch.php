@@ -1,8 +1,4 @@
 <?php
-
-include "navbar.php";
-include 'DBconn.php';
-
 $roomGrade = $_POST['roomGrade'];
 $reservedStartDate = $_POST['reservedStartDate'];
 $reservedEndDate = $_POST['reservedEndDate'];
@@ -12,13 +8,12 @@ $emailAddress = $_POST['emailAddress'];
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
 	<link rel="stylesheet" href="static/css/roomDetail.css">
-	<title>Reserve</title>
+	<title><?php echo ($result !== FALSE) ? "Thank you" : "Sorry"; ?></title>
 	<style>
 		.warning-message {
 		    margin: 20px auto;
@@ -53,6 +48,8 @@ $emailAddress = $_POST['emailAddress'];
 
 <body>
 	<?php
+	include "navbar.php";
+	include 'DBconn.php';
 	// Validate
 	if (!$roomGrade || !$reservedStartDate || !$reservedEndDate || !$reservedStartTime || !$reservedEndTime || !$emailAddress) {
 		echo "
@@ -74,6 +71,7 @@ $emailAddress = $_POST['emailAddress'];
 	$result = $checkStmt->get_result();
 
 	if ($result->num_rows > 0) {
+		echo "<script>document.title = 'Sorry';</script>";
 		echo "
 		<div class='warning-message'>
 			<p>Sorry, the selected room is already reserved for the specified time range.</p>
@@ -143,8 +141,10 @@ $emailAddress = $_POST['emailAddress'];
 		$result = @file_get_contents($url, false, $context);
 		
 		if ($result === FALSE) {
+			echo "<script>document.title = 'Sorry';</script>";
 			echo "Error sending data to Node.js.";
 		} else {
+			echo "<script>document.title = 'Thank you';</script>";
 			echo $result;
 		}
 	}
