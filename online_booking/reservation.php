@@ -1,18 +1,13 @@
 <?php
 
-// Predefine filtering result in rooms.php
-// Connect to database
 include 'DBconn.php';
 
 if (isset($_GET['roomGrade'])) {
 	$selectedroomGrade = isset($_GET['roomGrade']) ? $_GET['roomGrade'] : '';
 	$roomGrade = mysqli_real_escape_string($conn, $_GET['roomGrade']);
-
-	// Get room details from database
 	$sql = "SELECT * FROM room_details WHERE roomGrade = '$roomGrade'";
 	$result = mysqli_query($conn, $sql);
 	$row = mysqli_fetch_assoc($result);
-
 } else {
 	$selectedroomGrade = null;
 }
@@ -34,15 +29,15 @@ if (isset($_GET['roomGrade'])) {
 
 <body>
 	<?php include "navbar.php"; ?>
-	<?php // Check user is it logged in
+	<?php
 	if (!isset($_SESSION['loginUser'])) {
 		echo "
-    <div class='error-page'>
-        <p style='font-size: 20px; color: #333;'>Please log in to make a reservation.</p>
-				<button onclick=\"location.href='login.php';\">Login</button>
-    </div>";
+    		<div class='warning-message'>
+    		    <p style='font-size: 20px; color: #333;'>Please log in to make a reservation.</p><br/>
+						<button onclick=\"location.href='login.php';\">Login</button>
+    		</div>";
 		include "footer.php";
-		exit();
+		return;
 	} ?>
 
 	<section id="room-page">
@@ -61,7 +56,7 @@ if (isset($_GET['roomGrade'])) {
 						<p><?php echo nl2br($row['roomSpec']); ?></p>
 					</div>
 					<div class="room-text-right">
-						<span class="room-price">$ <?php echo $row['roomPrice']; ?></span>
+						<span class="room-price">HK$ <?php echo $row['roomPrice']; ?></span>
 					</div>
 				</div>
 			</div>
@@ -142,7 +137,7 @@ if (isset($_GET['roomGrade'])) {
 			return false;
 		}
 
-		return true; // Allow form submission if validation passes
+		return true;
 	}
 </script>
 <script src="static/js/jquery-3.7.1.min.js"></script>

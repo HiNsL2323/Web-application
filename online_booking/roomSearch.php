@@ -61,13 +61,12 @@ $emailAddress = $_POST['emailAddress'];
 			<button class='back-btn' onclick='history.back()'>Go Back</button>
 		</div>";
 		include "footer.php";
-		exit();
+		return;
 	}
 
 	$checkIn = $reservedStartDate . ' ' . $reservedStartTime;
 	$checkOut = $reservedEndDate . ' ' . $reservedEndTime;
 
-	// Check if a reservation already exists
 	$checkSql = "SELECT * FROM reservation WHERE roomGrade = ? AND (checkIn < ? AND checkOut > ?)";
 	$checkStmt = $conn->prepare($checkSql);
 	$checkStmt->bind_param("sss", $roomGrade, $checkOut, $checkIn);
@@ -81,10 +80,9 @@ $emailAddress = $_POST['emailAddress'];
 			<button class='back-btn' onclick='history.back()'>Go Back</button>
 		</div>";
 		include "footer.php";
-		exit();
+		return;
 	}
 
-	// Fetch roomPrice from room_details table
 	$priceSql = "SELECT roomPrice FROM room_details WHERE roomGrade = ?";
 	$priceStmt = $conn->prepare($priceSql);
 	$priceStmt->bind_param("s", $roomGrade);
@@ -92,8 +90,13 @@ $emailAddress = $_POST['emailAddress'];
 	$priceResult = $priceStmt->get_result();
 
 	if ($priceResult->num_rows === 0) {
-		echo "Invalid room grade selected.";
-		exit();
+		echo "
+		<div class='warning-message'>
+			<p>Invalid room grade selected.</p>
+			<button class='back-btn' onclick='history.back()'>Go Back</button>
+		</div>";
+		include "footer.php";
+		return;
 	}
 
 	$roomDetails = $priceResult->fetch_assoc();
@@ -103,11 +106,11 @@ $emailAddress = $_POST['emailAddress'];
 	$checkOutDateTime = new DateTime($checkOut);
 	$interval = $checkInDateTime->diff($checkOutDateTime);
 	$totalDays = $interval->days;
-
-	// Calculate total cost
+	if ($checkInDateTime->diff($checkOutDateTime)->h > 0 || $checkInDateTime->diff($checkOutDateTime)->i > 0) {
+		$totalDays++;
+	}
 	$totalCost = $totalDays * $roomPrice;
 
-	// Insert reservation data into the MySQL database
 	$sql = "INSERT INTO reservation (roomGrade, checkIn, checkOut, emailAddress, totalCost) VALUES (?, ?, ?, ?, ?)";
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param("ssssd", $roomGrade, $checkIn, $checkOut, $emailAddress, $totalCost);
@@ -126,10 +129,9 @@ $emailAddress = $_POST['emailAddress'];
 		echo "Error saving reservation: " . $stmt->error;
 	}
 
-	// Function to send data to the Node.js server
 	function sendToNodeJs($data)
 	{
-		$url = 'http://localhost:3000/reservation'; // Replace with your Node.js server URL
+		$url = 'http://localhost:3000/reservation';
 		$options = [
 			'http' => [
 				'header' => "Content-type: application/json\r\n",
@@ -141,9 +143,9 @@ $emailAddress = $_POST['emailAddress'];
 		$result = @file_get_contents($url, false, $context);
 		
 		if ($result === FALSE) {
-			echo "Error sending data to Node.js server.";
+			echo "Error sending data to Node.js.";
 		} else {
-			echo $result;  // Display the HTML page from Node.js
+			echo $result;
 		}
 	}
 	
