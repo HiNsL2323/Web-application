@@ -124,13 +124,22 @@
             // Check if email already exists
             $emailCheckSql = "SELECT * FROM member WHERE emailAddress = '$emailAddress'";
             $emailCheckResult = $conn->query($emailCheckSql);
-            
+
+            // Check if member ID already exists
+            //$memberIDCheckSql = "SELECT * FROM member WHERE memberID = '$memberID'";
+            //$memberIDCheckResult = $conn->query($memberIDCheckSql);
+
+            // Generate member ID
+            $timestamp = time();
+		    $memberID = "Mem" . base_convert($timestamp, 10, 36) . str_pad(rand(1, 999999), 6, "0", STR_PAD_LEFT);
+
+
             if ($emailCheckResult->num_rows > 0) {
                 $errorMessage = "Email address already exists. Please use a different one.";
             } else {
                 // Insert new record
-                $sql = "INSERT INTO member (lastName, firstName, mailingAddress, phoneNumber, emailAddress, password)
-                        VALUES ('$lastName', '$firstName', '$mailingAddress', '$phoneNumber', '$emailAddress', '$password')";
+                $sql = "INSERT INTO member (lastName, firstName, mailingAddress, phoneNumber, memberID, emailAddress, password)
+                        VALUES ('$lastName', '$firstName', '$mailingAddress', '$phoneNumber', '$memberID', '$emailAddress', '$password')";
 
                 if ($conn->query($sql) === TRUE) {
                     $successMessage = "New record created successfully";
@@ -190,10 +199,8 @@
         var errorMessage = "<?php echo $errorMessage; ?>";
         var successMessage = "<?php echo $successMessage; ?>";
 
-        // Get the <span> elements that close the modals
         var closeButtons = document.getElementsByClassName("close");
 
-        // When the user clicks on <span> (x), close the modal
         for (var i = 0; i < closeButtons.length; i++) {
             closeButtons[i].onclick = function() {
                 errorModal.style.display = "none";
@@ -201,7 +208,6 @@
             }
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == errorModal) {
                 errorModal.style.display = "none";
@@ -211,7 +217,7 @@
             }
         }
 
-        // Show the appropriate modal if there's a message
+        // Show the message
         if (errorMessage) {
             document.getElementById("errorMessage").innerText = errorMessage;
             errorModal.style.display = "block";
@@ -219,7 +225,6 @@
         if (successMessage) {
             document.getElementById("successMessage").innerText = successMessage;
             successModal.style.display = "block";
-            // Redirect to login page after 3 seconds
             setTimeout(function() {
                 window.location.href = 'login.php';
             }, 1000);
