@@ -1,4 +1,3 @@
-/* Room Page Layout */
 #room-page {
 	display: flex;
 	justify-content: center;
@@ -6,7 +5,6 @@
 	background-color: #f9f9f9;
 }
 
-/* Content Wrapper */
 .room-content {
 	display: flex;
 	width: 100%;
@@ -14,32 +12,32 @@
 	gap: 20px;
 }
 
-.error-page{
-	display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  height: 20vh; 
-  text-align: center; 
-  background-color: #f9f9f9;
-  font-family: Arial, sans-serif
+.warning-message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 20vh;
+	text-align: center;
+	background-color: #f9f9f9;
+	font-family: Arial, sans-serif
 }
 
 
 button {
-		padding: 10px 20px;
-		background-color: #333;
-		color: #fff;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-		font-size: 16px;
-		transition: background-color 0.3s ease;
+	padding: 10px 20px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
 }
 
 
 button:hover {
-		background-color: #555;
+	background-color: #555;
 }
 
 /* Left Section: Room Details and Text */
@@ -47,8 +45,7 @@ button:hover {
 	flex: 2;
 }
 
-.room-details
-{
+.room-details {
 	margin-bottom: 20px;
 }
 
@@ -91,7 +88,6 @@ button:hover {
 	color: #555;
 }
 
-/* Right Content (Price) */
 .room-text-right {
 	flex: 1;
 	text-align: right;
@@ -110,7 +106,6 @@ button:hover {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Right Section: Reservation Form */
 .right-section {
 	flex: 1;
 }
@@ -195,11 +190,11 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
 	.room-content {
-			flex-direction: column;
+		flex-direction: column;
 	}
 
 	.left-section,
 	.right-section {
-			width: 100%;
+		width: 100%;
 	}
 }
