@@ -68,10 +68,10 @@ INSERT INTO `member` (`lastName`, `firstName`, `mailingAddress`, `phoneNumber`, 
 
 CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
-  `roomGrade` varchar(255) NOT NULL,
+  `roomGrade` varchar(20) NOT NULL,
   `checkIn` datetime NOT NULL,
   `checkOut` datetime NOT NULL,
-  `emailAddress` varchar(255) NOT NULL,
+  `emailAddress` varchar(200) NOT NULL,
   `totalCost` decimal(10,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
