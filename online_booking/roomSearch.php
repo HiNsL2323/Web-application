@@ -19,13 +19,48 @@ $emailAddress = $_POST['emailAddress'];
 	<link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
 	<link rel="stylesheet" href="static/css/roomDetail.css">
 	<title>Reserve</title>
+	<style>
+		.warning-message {
+		    margin: 20px auto;
+		    padding: 15px;
+		    max-width: 600px;
+		    text-align: center;
+		    background-color: #f8d7da;
+		    color: #721c24; 
+		    border: 1px solid #f5c6cb;
+		    border-radius: 5px;
+		    font-family: Arial, sans-serif;
+		    font-size: 16px;
+		}
+
+		.back-btn {
+		    margin-top: 10px;
+		    padding: 10px 20px;
+		    background-color: #333;
+		    color: #fff;
+		    border: none;
+		    border-radius: 5px;
+		    cursor: pointer;
+		    font-size: 16px;
+		    transition: background-color 0.3s ease;
+		}
+
+		.back-btn:hover {
+		    background-color: #555;
+		}
+	</style>
 </head>
 
 <body>
 	<?php
 	// Validate
 	if (!$roomGrade || !$reservedStartDate || !$reservedEndDate || !$reservedStartTime || !$reservedEndTime || !$emailAddress) {
-		echo "All fields are required!";
+		echo "
+		<div class='warning-message'>
+			<p>All fields are required</p>
+			<button class='back-btn' onclick='history.back()'>Go Back</button>
+		</div>";
+		include "footer.php";
 		exit();
 	}
 
@@ -40,7 +75,12 @@ $emailAddress = $_POST['emailAddress'];
 	$result = $checkStmt->get_result();
 
 	if ($result->num_rows > 0) {
-		echo "The selected room is already reserved for the specified time range.";
+		echo "
+		<div class='warning-message'>
+			<p>Sorry, the selected room is already reserved for the specified time range.</p>
+			<button class='back-btn' onclick='history.back()'>Go Back</button>
+		</div>";
+		include "footer.php";
 		exit();
 	}
 
