@@ -122,10 +122,10 @@ app.post('/reservation', (req, res) => {
 			<p>feel free to contact info@DreamcatcherPalace.com  </p>
 		
 			<div class="footer-like">
-			<p><strong>Room Grade: ${roomGrade} </strong> </p>
-			<p><strong>Room Number: ${checkIn} </strong> </p>
-			<p><strong>Check In Date: ${checkOut}  </strong> </p>
-			<p><strong>Check Out Date:  ${emailAddress}  </strong> </p>
+                        <p><strong>Room Grade: ${roomGrade} </strong> </p>
+			<p><strong>Check-In Date: ${checkIn} </strong> </p>
+			<p><strong>Check-Out Date:  ${checkOut}  </strong> </p>
+			<p><strong>Email Address: ${emailAddress}  </strong> </p>
 			<p><strong>Total Cost:</strong> $${totalCost.toFixed(2)} </strong> </p>
 						<a href="home.php" >
 				<button class="go-home">
